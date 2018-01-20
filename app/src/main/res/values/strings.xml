@@ -1,6 +1,31 @@
 <resources>
     <string name="app_name">Klearn</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_menu">Menu</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string-array name="news_feeds_toggle_array">
+        <item>Yesterday</item>
+        <item>Today</item>
+        <item>Most popular</item>
+    </string-array>
+    <string-array name="favourites_toggle_array">
+        <item>Questions</item>
+        <item>Posts</item>
+        <item>Articles</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news_feed">News feeds</string>
+    <string name="fav">Favourites</string>
+    <string name="menu">Menu</string>
+    <string name="lorem_ipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra dolor ac risus fermentum vehicula. Pellentesque semper a leo in pharetra. Praesent mollis viverra lobortis. Nulla ac lectus non justo consequat luctus. Nam tincidunt congue consectetur. Ut tincidunt porttitor tellus, id molestie magna dapibus in. Suspendisse sed ante vel nulla laoreet rutrum id in ante. Nunc sagittis ligula non varius dictum. Duis fermentum fringilla neque, at eleifend est consequat in. Donec ac mollis neque. Sed vel nulla sed libero pellentesque sagittis porttitor vel sem. Nulla pellentesque turpis eget ante pretium convallis.</string>
+    <string name="lorem_ipsum_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra dolor ac risus fermentum vehicula. Pellentesque semper a leo in pharetra. Praesent mollis viverra lobortis.</string>
+    <string name="lorem_ipsum">Lorem ipsum</string>
 </resources>

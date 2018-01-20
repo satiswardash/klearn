@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "158111021855",
+    "firebase_url": "https://klearn-47b40.firebaseio.com",
+    "project_id": "klearn-47b40",
+    "storage_bucket": "klearn-47b40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158111021855:android:96d215b7f10e7c5a",
+        "android_client_info": {
+          "package_name": "com.kortain.klearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158111021855-bvg570kum2hdtp7tnlcm6pki4fqbep23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kortain.klearn",
+            "certificate_hash": "dbe098fb3e7567e3c9d95900b004a54974cf8b94"
+          }
+        },
+        {
+          "client_id": "158111021855-osn78i5dk0qs4srq9q9bsgij8ceg6f8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6Hi3vUubmftxSpSzNLqGx-p1jC3_dZX0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158111021855-osn78i5dk0qs4srq9q9bsgij8ceg6f8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

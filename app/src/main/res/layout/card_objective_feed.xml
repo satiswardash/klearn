@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:layout_marginBottom="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackgroundSecondary">
+
+        <TextView
+            android:id="@+id/cof_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/lorem_ipsum"
+            android:textColor="@color/colorGrey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/cof_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="1 min ago"
+            android:textColor="@color/colorGrey"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:id="@+id/header_line_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/cof_category"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/bg_separator_grey_stroke" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cof_user_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignStart="@+id/cof_category"
+            android:layout_below="@+id/header_line_separator"
+            android:layout_marginTop="4dp"
+            android:src="@mipmap/branding" />
+
+        <TextView
+            android:id="@+id/cof_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cof_user_image"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/cof_user_image"
+            android:ellipsize="end"
+            android:fontFamily="@font/raleway_medium"
+            android:maxLines="2"
+            android:layout_marginEnd="16dp"
+            android:text="@string/lorem_ipsum_title"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorBlackPrimary"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/layout_objective"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cof_user_image" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/cof_like_button"
+            android:layout_width="76dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_likebutton_primary_stroke_unpressed"
+            android:drawableStart="@drawable/ic_favorite_border_primary_16dp"
+            android:padding="8dp"
+            android:text="2k"
+            android:textColor="@color/colorPrimary"
+            android:textSize="11sp" />
+
+        <ImageButton
+            android:id="@+id/cof_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@mipmap/menu" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackgroundSecondary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/lwp_preview_image"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_placeholder_image" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lwp_preview_image"
+        android:background="@drawable/bg_urlpreview_grey_stroke"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lwp_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_bold"
+                android:maxLines="2"
+                android:textColor="@color/colorBlackSecondary"
+                android:textSize="12sp"
+                tools:text="@string/lorem_ipsum_title" />
+
+            <ImageView
+                android:id="@+id/lwp_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_bookmark_unpressed_24dp"
+                android:tint="@color/colorGrey" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lwp_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/raleway_regular"
+            android:maxLines="1"
+            android:textColor="@color/colorGrey"
+            android:textSize="11sp"
+            tools:text="www.kortain.com" />
+    </LinearLayout>
+</RelativeLayout>

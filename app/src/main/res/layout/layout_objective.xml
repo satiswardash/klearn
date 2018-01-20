@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackgroundSecondary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/obl_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp">
+
+            <RadioButton
+                android:id="@+id/obl_radioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/radio_button_tint"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlackSecondary"
+                android:textSize="14sp"
+                tools:text="Option 1" />
+
+            <RadioButton
+                android:id="@+id/obl_radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/radio_button_tint"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlackSecondary"
+                android:textSize="14sp"
+                tools:text="Option 2" />
+
+            <RadioButton
+                android:id="@+id/obl_radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/radio_button_tint"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlackSecondary"
+                android:textSize="14sp"
+                tools:text="Option 3" />
+
+            <RadioButton
+                android:id="@+id/obl_radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/radio_button_tint"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlackSecondary"
+                android:textSize="14sp"
+                tools:text="Option 4" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/obl_analytics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway_regular"
+            android:maxLines="1"
+            android:text="20k people answered correctly"
+            android:textColor="@color/colorBlackSecondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_separator_grey_solid_stroke"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/obl_view_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/ic_remove_red_eye_black"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/obl_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/obl_view_button"
+            android:layout_marginEnd="34dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/obl_view_button"
+            android:fontFamily="@font/raleway_regular"
+            android:maxLines="1"
+            android:textColor="@color/colorBlackSecondary"
+            android:textSize="12sp"
+            tools:text="@string/lorem_ipsum_title" />
+
+        <ImageView
+            android:id="@+id/obl_info_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/obl_view_button"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_info_outline_black"
+            android:tint="@color/colorGrey" />
+    </RelativeLayout>
+</LinearLayout>
