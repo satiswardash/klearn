@@ -28,4 +28,5 @@
     <string name="lorem_ipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra dolor ac risus fermentum vehicula. Pellentesque semper a leo in pharetra. Praesent mollis viverra lobortis. Nulla ac lectus non justo consequat luctus. Nam tincidunt congue consectetur. Ut tincidunt porttitor tellus, id molestie magna dapibus in. Suspendisse sed ante vel nulla laoreet rutrum id in ante. Nunc sagittis ligula non varius dictum. Duis fermentum fringilla neque, at eleifend est consequat in. Donec ac mollis neque. Sed vel nulla sed libero pellentesque sagittis porttitor vel sem. Nulla pellentesque turpis eget ante pretium convallis.</string>
     <string name="lorem_ipsum_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra dolor ac risus fermentum vehicula. Pellentesque semper a leo in pharetra. Praesent mollis viverra lobortis.</string>
     <string name="lorem_ipsum">Lorem ipsum</string>
+    <string name="no_connection">No connection!</string>
 </resources>

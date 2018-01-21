@@ -13,6 +13,7 @@ import com.kortain.klearn.MainActivity;
 import com.kortain.klearn.R;
 import com.kortain.klearn.Utility.ApplicationUtility;
 import com.kortain.klearn.Utility.Constants;
+import com.kortain.klearn.Utility.NetworkUtility;
 import com.kortain.klearn.Utility.ScreenUtility;
 import com.kortain.klearn.adapters.NewsFeedAdapter;
 import com.leocardz.link.preview.library.LinkPreviewCallback;
@@ -175,12 +176,14 @@ public class WebFeedViewHolder extends RecyclerView.ViewHolder implements LinkPr
         urlTitle.setText(sourceContent.getTitle());
         urlAddress.setText(sourceContent.getCannonicalUrl());
         ScreenUtility sUtility = getScreenUtility();
-        Picasso.with(mContext)
-                .load(sourceContent.getImages().get(0)).placeholder(R.drawable.ic_placeholder_image)
-                .resize((int) (375*sUtility.getDensity()), (int) (500*sUtility.getDensity()))
-                .onlyScaleDown()
-                .placeholder(R.drawable.ic_placeholder_image)
-                .into(urlPreview);
+        if (NetworkUtility.hasNetworkAccess(mContext)) {
+            Picasso.with(mContext)
+                    .load(sourceContent.getImages().get(0)).placeholder(R.drawable.ic_placeholder_image)
+                    .resize((int) (375*sUtility.getDensity()), (int) (500*sUtility.getDensity()))
+                    .onlyScaleDown()
+                    .placeholder(R.drawable.ic_placeholder_image)
+                    .into(urlPreview);
+        }
     }
 
     private ScreenUtility getScreenUtility() {

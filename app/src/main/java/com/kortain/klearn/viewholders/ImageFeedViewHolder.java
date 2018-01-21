@@ -13,6 +13,7 @@ import com.kortain.klearn.MainActivity;
 import com.kortain.klearn.R;
 import com.kortain.klearn.Utility.ApplicationUtility;
 import com.kortain.klearn.Utility.Constants;
+import com.kortain.klearn.Utility.NetworkUtility;
 import com.kortain.klearn.Utility.ScreenUtility;
 import com.kortain.klearn.adapters.NewsFeedAdapter;
 import com.kortain.klearn.fragments.NewsFeedFragment;
@@ -96,12 +97,15 @@ public class ImageFeedViewHolder extends RecyclerView.ViewHolder {
         if (item.contains(Constants.FEED_IMAGES)) {
             ScreenUtility sUtility = getScreenUtility();
             ArrayList<String> data = (ArrayList<String>) item.get(Constants.FEED_IMAGES);
-            Picasso.with(mContext)
-                    .load(data.get(0))
-                    .resize((int) (375*sUtility.getDensity()), (int) (500*sUtility.getDensity()))
-                    .placeholder(R.drawable.ic_placeholder_image)
-                    .onlyScaleDown()
-                    .into(articleImage);
+            if (NetworkUtility.hasNetworkAccess(mContext)) {
+
+                Picasso.with(mContext)
+                        .load(data.get(0))
+                        .resize((int) (375*sUtility.getDensity()), (int) (500*sUtility.getDensity()))
+                        .placeholder(R.drawable.ic_placeholder_image)
+                        .onlyScaleDown()
+                        .into(articleImage);
+            }
         }
         if (item.contains(Constants.FEED_LIKES)) {
             long data = item.getLong(Constants.FEED_LIKES);

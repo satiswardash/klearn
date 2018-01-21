@@ -3,8 +3,10 @@ package com.kortain.klearn.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -24,8 +27,10 @@ import com.kortain.klearn.Klearn;
 import com.kortain.klearn.MainActivity;
 import com.kortain.klearn.R;
 import com.kortain.klearn.Utility.Constants;
+import com.kortain.klearn.Utility.NetworkUtility;
 import com.kortain.klearn.Utility.ScreenUtility;
 import com.kortain.klearn.adapters.NewsFeedAdapter;
+import com.kortain.klearn.widgets.BottomNavigation;
 import com.kortain.klearn.widgets.ToggleButton;
 import com.leocardz.link.preview.library.TextCrawler;
 
@@ -66,6 +71,9 @@ public class NewsFeedFragment extends Fragment {
         mActivity = (MainActivity) getActivity();
         mFrameTitle = mActivity.findViewById(R.id.ah_frame_title);
         mToggleSwitch = mActivity.findViewById(R.id.ah_toggle_switch);
+        if (!NetworkUtility.hasNetworkAccess(getContext())) {
+            showNoNetworkSnack();
+        }
     }
 
     @Override
@@ -117,5 +125,22 @@ public class NewsFeedFragment extends Fragment {
         if (mRegistration != null) {
             mRegistration.remove();
         }
+    }
+
+    /**
+     * show No Network Snackbar
+     */
+    private void showNoNetworkSnack() {
+        final BottomNavigation nav = mActivity.findViewById(R.id.ah_bottom_navigation);
+        nav.setVisibility(View.INVISIBLE);
+        Snackbar snackbar = Snackbar.make(mActivity.findViewById(R.id.ah_root), R.string.no_connection, Snackbar.LENGTH_SHORT);
+        snackbar.show();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                nav.setVisibility(View.VISIBLE);
+            }
+        }, 2000);
     }
 }
