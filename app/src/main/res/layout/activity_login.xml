@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.kortain.klearn.LoginActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@mipmap/footer_branding" />
+
+    <TextView
+        android:id="@+id/al_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/imageView3"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/roboto_regular"
+        tools:text="Don’t have an account? REGISTER"
+        android:textAlignment="center"
+        android:textColor="@color/colorBackgroundPrimary"
+        android:textSize="12sp"
+        android:onClick="onRegisterClick"/>
+
+    <TextView
+        android:id="@+id/al_forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/al_register"
+        android:layout_marginBottom="46sp"
+        android:fontFamily="@font/roboto_regular"
+        android:onClick="resetPassword"
+        android:text="Forgot password?"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/al_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/al_forgot_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_button_primary_gradient"
+        android:fontFamily="@font/roboto_bold"
+        android:onClick="login"
+        android:text="LOG IN"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/al_password_editText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_above="@+id/al_login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_input_text_white_stroke"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_lock_white"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="16dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/al_email_editText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_above="@+id/al_password_editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_input_text_white_stroke"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_mail_white"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Email Id"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="16dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_above="@id/al_email_editText"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="86dp"
+        app:srcCompat="@mipmap/header_branding" />
+
+    <ProgressBar
+    android:id="@+id/al_progressBar"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:indeterminate="true"
+    android:layout_marginTop="-6dp"
+    android:indeterminateTint="@color/colorBackgroundPrimary"
+    android:visibility="invisible"/>
+
+</RelativeLayout>

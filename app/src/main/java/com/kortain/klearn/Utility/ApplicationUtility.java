@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -38,6 +41,26 @@ public class ApplicationUtility {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(activity, color));
+    }
+
+    /**
+     * setStatusBarVisibility
+     *
+     * @param activity
+     * @param visibility
+     */
+    public void setStatusBarVisibility(AppCompatActivity activity, int visibility) {
+        View decorView = activity.getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        ActionBar actionBar = activity.getSupportActionBar();
+
+        if (visibility == View.INVISIBLE) {
+            actionBar.hide();
+        }
+        else if (visibility == View.VISIBLE) {
+            actionBar.show();
+        }
     }
 
     /**

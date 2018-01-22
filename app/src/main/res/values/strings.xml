@@ -19,6 +19,18 @@
         <item>Posts</item>
         <item>Articles</item>
     </string-array>
+    <string-array name="interests_array">
+        <item>Aptitude</item>
+        <item>Current Affairs</item>
+        <item>Politics</item>
+        <item>Indian History</item>
+        <item>India</item>
+        <item>Entertainment</item>
+        <item>Economics</item>
+        <item>Business</item>
+        <item>Information &amp; Technology</item>
+        <item>Mathematics</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -29,4 +41,22 @@
     <string name="lorem_ipsum_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra dolor ac risus fermentum vehicula. Pellentesque semper a leo in pharetra. Praesent mollis viverra lobortis.</string>
     <string name="lorem_ipsum">Lorem ipsum</string>
     <string name="no_connection">No connection!</string>
+    <string name="join_klearn_academy_using_social_login">Join Klearn Academy using social login.</string>
+    <string name="register">REGISTER</string>
+    <string name="log_in">LOG IN</string>
+    <string name="register_success_verify_email">Your account has been created and we have sent you a verification link to your registered mailId, please verify your emailId before login.</string>
+    <string name="acknowledgement_message">Thank you for choosing Klearn Academy, Keep learning!</string>
+    <string name="success">Success!</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="_continue">CONTINUE</string>
+    <string name="invalid_mail_id">Oops! Looks like email Id is invalid.</string>
+    <string name="invalid_password">Password must be alphanumeric with minimum 6 characters, one upper case and one special character.</string>
+    <string name="some_error_occurred">Oops! Some error occurred, please try again.</string>
+    <string name="invalid_phone">Invalid phone number!</string>
+    <string name="empty_password">Password can not be empty!</string>
+    <string name="nav_from_login_to_register"><![CDATA[Don’t have an account? <b><u>REGISTER</u></b>]]></string>
+    <string name="nav_from_register_to_login"><![CDATA[Already have an account? <b><u>LOG IN</u></b>]]></string>
+    <string name="view_terms_conditions"><![CDATA[By Joining Klearn Academy, I agree to <b><u>Terms &amp; Conditions.</u></b>]]></string>
+    <string name="back_online">Back online.</string>
 </resources>

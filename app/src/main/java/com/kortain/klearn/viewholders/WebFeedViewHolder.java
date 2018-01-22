@@ -49,6 +49,7 @@ public class WebFeedViewHolder extends RecyclerView.ViewHolder implements LinkPr
     private boolean likeFlag = false;
     private boolean bookmarkFlag = false;
     private ApplicationUtility mUtility;
+    private TextCrawler mCrawler;
 
     /**
      * Overloaded parameter constructor
@@ -97,7 +98,7 @@ public class WebFeedViewHolder extends RecyclerView.ViewHolder implements LinkPr
         }
         if (item.contains(Constants.FEED_DESCRIPTION)) {
             String data = item.getString(Constants.FEED_DESCRIPTION);
-            TextCrawler mCrawler = new TextCrawler();
+            mCrawler = new TextCrawler();
             //TODO Validate the data whether its a web url or not
             mCrawler.makePreview(mViewHolder, data);
         }
@@ -183,6 +184,10 @@ public class WebFeedViewHolder extends RecyclerView.ViewHolder implements LinkPr
                     .onlyScaleDown()
                     .placeholder(R.drawable.ic_placeholder_image)
                     .into(urlPreview);
+        }
+
+        if (mCrawler != null) {
+            mCrawler.cancel();
         }
     }
 

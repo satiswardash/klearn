@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/splash_bg"
+    tools:context="com.kortain.klearn.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:src="@mipmap/footer_branding" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/join_klearn_academy_using_social_login"
+        android:textColor="@color/colorGrey"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textView3"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/aw_social_google_button"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/ic_social_google" />
+
+        <ImageButton
+            android:id="@+id/aw_social_face_button_button"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/ic_social_facebook" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/aw_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/color_secondary_gradient"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/register"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:onClick="onRegisterClicked"/>
+
+    <Button
+        android:id="@+id/aw_register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/aw_login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/color_primary_gradient"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/log_in"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:onClick="onLoginClicked"/>
+
+</RelativeLayout>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    tools:context="com.kortain.klearn.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@mipmap/footer_branding" />
+
+    <TextView
+        android:id="@+id/ar_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/roboto_regular"
+        tools:text="Already have an account? LOG IN"
+        android:textAlignment="center"
+        android:textColor="@color/colorBackgroundPrimary"
+        android:textSize="12sp"
+        android:onClick="onLoginClick"/>
+
+    <TextView
+        android:id="@+id/ar_view_terms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ar_login"
+        android:layout_marginBottom="46sp"
+        android:fontFamily="@font/roboto_regular"
+        tools:text="By Joining Klearn Academy, I agree to Terms &amp; Conditions."
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/ar_register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ar_view_terms"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_button_secondary_gradient"
+        android:text="REGISTER"
+        android:textColor="@color/colorWhite"
+        android:onClick="register"/>
+
+    <EditText
+        android:id="@+id/ar_phone_editText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_above="@+id/ar_register_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_input_text_white_stroke"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_phone_white"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Mobile"
+        android:inputType="phone"
+        android:paddingLeft="16dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/ar_password_editText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_above="@+id/ar_phone_editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_input_text_white_stroke"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_lock_white"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="16dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/ar_email_editText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_above="@+id/ar_password_editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_input_text_white_stroke"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_mail_white"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Email Id"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="16dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_above="@id/ar_email_editText"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="24dp"
+        app:srcCompat="@mipmap/header_branding_secondary" />
+
+    <ProgressBar
+        android:id="@+id/ar_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:indeterminate="true"
+        android:layout_marginTop="-6dp"
+        android:indeterminateTint="@color/colorBackgroundPrimary"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

@@ -24,4 +24,18 @@ public interface Constants {
     String FEED_CATEGORY_IMAGE = "Image Article";
 
     String COLLECTION_FEEDS = "feeds";
+    String COLLECTION_USERS = "users";
+
+    String USER_NAME = "nme";
+    String USER_PHONE = "phone";
+    String USER_EMAIL = "email";
+    String USER_POINTS = "points";
+    String USER_PICTURE = "pictureUri";
+    String USER_QUOTA = "isAdmin";
+    String USER_INTERESTS = "interests";
+    String USER_BOOKMARKS = "bookmarks";
+    String USER_FAVOURITES = "favourites";
+
+    String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
 }
