@@ -3,6 +3,7 @@ package com.kortain.klearn;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,10 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.kortain.klearn.Utility.ApplicationUtility;
+import com.kortain.klearn.Utility.Constants;
 import com.kortain.klearn.Utility.NetworkUtility;
 import com.kortain.klearn.Utility.ScreenUtility;
 import com.kortain.klearn.fragments.FavouritesFragment;
@@ -27,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
     public static ScreenUtility SCREEN_UTILITY;
     private FirebaseUser mUser;
     private BottomNavigation mBottomNavigation;
+    private FloatingActionButton fab;
+
+    private ListenerRegistration mRegistration;
 
     private BottomNavigation.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigation.OnNavigationItemSelectedListener() {
@@ -89,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
                     .reload()
                     .addOnCompleteListener(this);
         }
+        initFab();
     }
 
     /**
@@ -120,6 +132,47 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
         SCREEN_UTILITY = ScreenUtility.getInstance(this);
         ApplicationUtility.getInstance(this).setStatusBarBackground(this, R.color.colorPrimaryTransparent);
         mBottomNavigation = findViewById(R.id.ah_bottom_navigation);
+    }
+
+    /**
+     * {@link FloatingActionButton} onClick event handler
+     * Navigates to CreateNewPost activity
+     *
+     * @param view
+     */
+    public void createNewPost(View view) {
+
+    }
+
+    /**
+     * Check the user quota from Firestore users collection,
+     * if Admin user then show the Create New Post fab button.
+     */
+    private void initFab() {
+        mRegistration = FirebaseFirestore.getInstance()
+                .collection(Constants.COLLECTION_USERS)
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(DocumentSnapshot snapshot, FirebaseFirestoreException e) {
+                        if (e == null) {
+                            if (snapshot.contains(Constants.USER_IS_ADMIN)) {
+                                fab = findViewById(R.id.ah_create_post_fab);
+                                if (snapshot.getBoolean(Constants.USER_IS_ADMIN)) {
+                                    final Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            fab.show();
+                                        }
+                                    }, 600);
+                                } else {
+                                    fab.hide();
+                                }
+                            }
+                        }
+                    }
+                });
     }
 
     /**
@@ -156,5 +209,16 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
                 nav.setVisibility(View.VISIBLE);
             }
         }, 3000);
+    }
+
+    /**
+     * Deregister any available listeners when activity gets stopped
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mRegistration != null) {
+            mRegistration.remove();
+        }
     }
 }

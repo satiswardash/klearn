@@ -31,7 +31,7 @@ public interface Constants {
     String USER_EMAIL = "email";
     String USER_POINTS = "points";
     String USER_PICTURE = "pictureUri";
-    String USER_QUOTA = "isAdmin";
+    String USER_IS_ADMIN = "isAdmin";
     String USER_INTERESTS = "interests";
     String USER_BOOKMARKS = "bookmarks";
     String USER_FAVOURITES = "favourites";

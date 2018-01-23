@@ -158,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity implements OnCompleteLis
 
             db.collection(Constants.COLLECTION_USERS)
                     .document(task.getResult().getUser().getUid())
-                    .set(getUser(result), SetOptions.merge())
+                    .set(createNewUser(result), SetOptions.merge())
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -228,14 +228,14 @@ public class RegisterActivity extends AppCompatActivity implements OnCompleteLis
      * @param result
      * @return
      */
-    private Map<String, Object> getUser(AuthResult result) {
+    private Map<String, Object> createNewUser(AuthResult result) {
         Map<String, Object> user = new HashMap<>();
         user.put(Constants.USER_NAME, result.getUser().getDisplayName());
         user.put(Constants.USER_PHONE, mPhone.getText().toString());
         user.put(Constants.USER_EMAIL, result.getUser().getEmail());
         user.put(Constants.USER_POINTS, 0l);
         user.put(Constants.USER_PICTURE, new String(""));
-        user.put(Constants.USER_QUOTA, false);
+        user.put(Constants.USER_IS_ADMIN, false);
         user.put(Constants.USER_INTERESTS, new ArrayList<String>());
         user.put(Constants.USER_BOOKMARKS, new ArrayList<String>());
         user.put(Constants.USER_FAVOURITES, new ArrayList<String>());
