@@ -40,6 +40,7 @@ dependencies {
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.leocardz:link-preview:2.0.0@aar'
     compile 'com.nex3z:toggle-button-group:1.1.2'
+    compile 'com.eftimoff:android-pathview:1.0.8@aar'
 
 }
 

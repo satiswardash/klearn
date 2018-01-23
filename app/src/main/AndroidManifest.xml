@@ -35,7 +35,7 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".RegisterSuccessActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
         <activity
             android:name=".RegisterInterestsActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 
+import com.eftimoff.androipathview.PathView;
 import com.kortain.klearn.Utility.ApplicationUtility;
 
 public class ResetPasswordSuccessActivity extends AppCompatActivity {
@@ -25,6 +27,7 @@ public class ResetPasswordSuccessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password_success);
         ApplicationUtility.getInstance(getApplicationContext()).setStatusBarVisibility(this, View.INVISIBLE);
+        play();
     }
 
     /**
@@ -45,5 +48,18 @@ public class ResetPasswordSuccessActivity extends AppCompatActivity {
      */
     public void onBackPressed(View view) {
         onBackPressed();
+    }
+
+    /**
+     * Using custom path animation API {@link PathView} and using {@link AccelerateInterpolator}
+     */
+    private void play() {
+        PathView pathView = findViewById(R.id.ars_success_logo);
+        pathView.useNaturalColors();
+        pathView.getPathAnimator()
+                .delay(300)
+                .duration(400)
+                .interpolator(new AccelerateInterpolator())
+                .start();
     }
 }

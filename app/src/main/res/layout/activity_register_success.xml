@@ -71,14 +71,16 @@
         android:textColor="@color/colorWhite"
         android:textSize="12sp" />
 
-    <ImageView
+    <com.eftimoff.androipathview.PathView
         android:id="@+id/ars_success_logo"
         android:layout_width="142dp"
         android:layout_height="142dp"
         android:layout_above="@id/textView4"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:src="@mipmap/success" />
+        app:svg="@raw/correct"
+        app:pathWidth="2dp"
+        android:background="@drawable/ic_circle_gradient_secondary"/>
 
 
 </RelativeLayout>

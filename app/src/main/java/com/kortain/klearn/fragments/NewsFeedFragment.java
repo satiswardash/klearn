@@ -141,6 +141,7 @@ public class NewsFeedFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news_feed, container, false);
         mRecyclerView = view.findViewById(R.id.news_feed_recycler_view);
+        mRecyclerView.setNestedScrollingEnabled(false);
         bindNewsFeedAdapter();
         return view;
     }
