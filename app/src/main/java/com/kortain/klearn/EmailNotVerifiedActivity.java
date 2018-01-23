@@ -3,8 +3,13 @@ package com.kortain.klearn;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AnticipateOvershootInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
+import com.eftimoff.androipathview.PathView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.kortain.klearn.Utility.ApplicationUtility;
@@ -27,6 +32,20 @@ public class EmailNotVerifiedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_not_verified);
         ApplicationUtility.getInstance(getApplicationContext()).setStatusBarVisibility(this, View.INVISIBLE);
+        play();
+    }
+
+    /**
+     * Using custom path animation API {@link PathView} and using {@link AccelerateInterpolator}
+     */
+    private void play() {
+        PathView pathView = findViewById(R.id.pathview);
+        pathView.useNaturalColors();
+        pathView.getPathAnimator()
+                .delay(500)
+                .duration(400)
+                .interpolator(new AccelerateInterpolator())
+                .start();
     }
 
     /**

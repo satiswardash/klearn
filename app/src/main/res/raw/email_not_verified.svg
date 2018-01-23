@@ -1,0 +1,20 @@
+
+<svg width="58px" height="48px" viewBox="0 0 58 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mail-2" fill-rule="nonzero">
+            <g id="Group">
+                <polygon id="Shape" fill="#DCD6CD" points="0 0 0 39 28 39 56 39 56 0"></polygon>
+                <path d="M30.965,22.107 C29.328,23.569 26.673,23.569 25.035,22.107 L22.948,20.264 C16.419,26.091 0,39 0,39 L21.607,39 L34.394,39 L56,39 C56,39 39.581,26.091 33.052,20.264 L30.965,22.107 Z" id="Shape" fill="#E8E3D9"></path>
+                <path d="M0,0 L25.035,22.107 C26.672,23.569 29.327,23.569 30.965,22.107 L56,0 L0,0 Z" id="Shape" fill="#EFEBDE"></path>
+            </g>
+            <g id="Group" transform="translate(31.000000, 25.000000)">
+                <path d="M25.761,23 L2.07,23 C1.115,23 0.52,21.964 1.001,21.139 L12.846,0.833 C13.324,0.014 14.506,0.014 14.984,0.833 L26.83,21.139 C27.311,21.964 26.716,23 25.761,23 Z" id="Shape" fill="#EFC41A"></path>
+                <path d="M14,16 C13.448,16 13,15.552 13,15 L13,7 C13,6.448 13.448,6 14,6 C14.552,6 15,6.448 15,7 L15,15 C15,15.552 14.552,16 14,16 Z" id="Shape" fill="#EFC41A"></path>
+                <path d="M14,20 C13.74,20 13.48,19.89 13.29,19.71 C13.11,19.52 13,19.26 13,19 C13,18.74 13.11,18.48 13.29,18.29 C13.67,17.92 14.33,17.92 14.71,18.29 C14.89,18.48 15,18.74 15,19 C15,19.26 14.89,19.52 14.71,19.71 C14.52,19.89 14.27,20 14,20 Z" id="Shape" fill="#EFC41A"></path>
+            </g>
+        </g>
+    </g>
+</svg>

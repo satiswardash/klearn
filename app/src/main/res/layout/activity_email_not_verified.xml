@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorSecondary"
     tools:context="com.kortain.klearn.EmailNotVerifiedActivity">
 
     <ImageView
@@ -25,20 +26,30 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Looks like your Email Id is not verified yet!"
+        android:text="Hey, looks like you haven't verified your Email Id yet!"
         android:textColor="@color/colorBackgroundPrimary"
         android:textSize="20sp" />
+
+    <com.eftimoff.androipathview.PathView
+        android:id="@+id/pathview"
+        android:layout_width="142dp"
+        android:layout_height="142dp"
+        android:layout_below="@id/textView10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        app:pathWidth="2dp"
+        app:svg="@raw/email_not_verified" />
 
     <Button
         android:id="@+id/send_verification_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView10"
+        android:layout_above="@id/afp_back"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_button_primary_gradient"
+        android:background="@drawable/bg_button_secondary_gradient"
         android:fontFamily="@font/roboto_bold"
         android:onClick="sendVerificationAgain"
         android:text="Send Again"
@@ -49,30 +60,31 @@
         android:id="@+id/afp_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/send_verification_button"
+        android:layout_above="@id/imageView5"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_arrow_back_white"
+        android:drawableTint="@color/colorWhite"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
         android:onClick="navBack"
         android:text="BACK"
-        android:textColor="@color/colorBackgroundPrimary"
+        android:textColor="@color/colorWhite"
         android:textSize="14sp" />
 
     <TextView
         android:id="@+id/verification_confirmation_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView5"
+        android:layout_above="@+id/send_verification_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/roboto_regular"
         android:text="we have sent you a verification link to your registered mailId, please verify your emailId before login."
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorBackgroundPrimary"
         android:textSize="12sp"
         android:visibility="invisible" />
 </RelativeLayout>
