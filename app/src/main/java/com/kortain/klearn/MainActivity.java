@@ -1,5 +1,7 @@
 package com.kortain.klearn;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -12,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,9 +26,9 @@ import com.kortain.klearn.Utility.ApplicationUtility;
 import com.kortain.klearn.Utility.Constants;
 import com.kortain.klearn.Utility.NetworkUtility;
 import com.kortain.klearn.Utility.ScreenUtility;
-import com.kortain.klearn.fragments.FavouritesFragment;
-import com.kortain.klearn.fragments.MenuFragment;
-import com.kortain.klearn.fragments.NewsFeedFragment;
+import com.kortain.klearn.fragments.Favourites;
+import com.kortain.klearn.fragments.MenuHome;
+import com.kortain.klearn.fragments.NewsFeed;
 import com.kortain.klearn.widgets.BottomNavigation;
 
 public class MainActivity extends AppCompatActivity implements OnCompleteListener<Void> {
@@ -47,21 +48,31 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
             switch (item.getItemId()) {
 
                 case R.id.navigation_home: {
-                    initFragment(new NewsFeedFragment());
+                    initFragment(new NewsFeed(), NewsFeed.class.toString());
                     break;
                 }
 
                 case R.id.navigation_favourites: {
-                    initFragment(new FavouritesFragment());
+                    initFragment(new Favourites(), Favourites.class.toString());
                     break;
                 }
 
                 case R.id.navigation_menu: {
-                    initFragment(new MenuFragment());
+                    initFragment(new MenuHome(), MenuHome.class.toString());
                     break;
                 }
             }
             return true;
+        }
+    };
+
+    private View.OnClickListener mFabListener
+            = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            Intent createFeedIntent = new Intent(getApplicationContext(), CreateNewFeedActivity.class);
+            startActivity(createFeedIntent);
         }
     };
 
@@ -124,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
      * mBottomNavigation
      * <p>
      * Set the actionbar visibility property to SYSTEM_UI_FLAG_FULLSCREEN
-     * Set the default fragment selection to {@link NewsFeedFragment}
+     * Set the default fragment selection to {@link NewsFeed}
      * Set the {@link ScreenUtility} instance to SCREEN_UTILITY constant
      */
     private void initActivity() {
@@ -164,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
                                         @Override
                                         public void run() {
                                             fab.show();
+                                            fab.setOnClickListener(mFabListener);
                                         }
                                     }, 600);
                                 } else {
@@ -180,10 +192,23 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
      *
      * @param fragment
      */
-    private void initFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.ah_frame_layout, fragment);
-        fragmentTransaction.commit();
+    private void initFragment(Fragment fragment, String tag) {
+        Fragment result = getSupportFragmentManager()
+                .findFragmentByTag(tag);
+
+        if (result != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.ah_frame_layout, result, tag)
+                    .addToBackStack(tag)
+                    .commit();
+        } else {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.ah_frame_layout, fragment, tag)
+                    .addToBackStack(tag)
+                    .commit();
+        }
     }
 
     /**
@@ -219,6 +244,19 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
         super.onStop();
         if (mRegistration != null) {
             mRegistration.remove();
+        }
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void onBackPressed() {
+        int c = getSupportFragmentManager().getBackStackEntryCount();
+        if (c > 3) {
+            getSupportFragmentManager().popBackStackImmediate();
+        } else {
+            finish();
         }
     }
 }

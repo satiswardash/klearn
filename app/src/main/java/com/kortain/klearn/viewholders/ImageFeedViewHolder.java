@@ -16,7 +16,6 @@ import com.kortain.klearn.Utility.Constants;
 import com.kortain.klearn.Utility.NetworkUtility;
 import com.kortain.klearn.Utility.ScreenUtility;
 import com.kortain.klearn.adapters.NewsFeedAdapter;
-import com.kortain.klearn.fragments.NewsFeedFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

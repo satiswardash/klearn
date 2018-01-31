@@ -17,6 +17,7 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,7 +35,7 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".RegisterSuccessActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".RegisterInterestsActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
@@ -46,11 +47,16 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".EmailNotVerifiedActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
         <service
             android:name=".services.NetworkStateService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity
+            android:name=".CreateNewFeedActivity">
+
+        </activity>
     </application>
 
 </manifest>

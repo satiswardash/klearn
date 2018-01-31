@@ -18,7 +18,8 @@ public class NetworkStateService extends JobService {
 
         Intent intent = new Intent(NETWORK_STATE_ACTION);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-        return false;
+        jobFinished(jobParameters, true);
+        return true;
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -44,8 +45,9 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFeedFragment extends Fragment {
+public class NewsFeed extends Fragment {
 
+    private View mView;
     private TextView mFrameTitle;
     private ToggleButton mToggleSwitch;
     private MainActivity mActivity;
@@ -61,8 +63,8 @@ public class NewsFeedFragment extends Fragment {
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //showSnackBar(getString(R.string.back_online));
-            bindNewsFeedAdapter();
+            showSnackBar(getString(R.string.back_online));
+            //bindNewsFeedAdapter();
             fetchQuerySnapshots();
         }
     };
@@ -70,7 +72,7 @@ public class NewsFeedFragment extends Fragment {
     /**
      * Default constructor (Required)
      */
-    public NewsFeedFragment() {
+    public NewsFeed() {
     }
 
     /**
@@ -106,20 +108,13 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mFrameTitle.setText(R.string.news_feed);
-        mToggleSwitch.setSwitchElements(
-                mActivity.getResources().getStringArray(R.array.news_feeds_toggle_array),
-                new boolean[]{false, true, false});
-
-        AppBarLayout appBarLayout = mActivity.findViewById(R.id.ah_appbar);
-        if (appBarLayout.getVisibility() == View.INVISIBLE) {
-            appBarLayout.setVisibility(View.VISIBLE);
-        }
-
         mQuery = FirebaseFirestore.getInstance()
                 .collection(Constants.COLLECTION_FEEDS)
                 .orderBy(Constants.FEED_TIMESTAMP, Query.Direction.DESCENDING)
                 .limit(25);
+
+        mFeedAdapter = new NewsFeedAdapter(mActivity.getApplicationContext(), mNewsFeeds);
+        fetchQuerySnapshots();
     }
 
     /**
@@ -127,7 +122,7 @@ public class NewsFeedFragment extends Fragment {
      * and non-graphical fragments can return null (which is the default implementation).
      * This will be called between onCreate(Bundle) and onActivityCreated(Bundle).
      * <p>
-     * Here we are inflating the {@link NewsFeedFragment} layout and initializing its view components
+     * Here we are inflating the {@link NewsFeed} layout and initializing its view components
      * Bind the news feed recycler view adapter with an empty {@link ArrayList<DocumentSnapshot>},
      * which will automatically load the incoming feeds.
      *
@@ -139,11 +134,33 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_news_feed, container, false);
-        mRecyclerView = view.findViewById(R.id.news_feed_recycler_view);
-        mRecyclerView.setNestedScrollingEnabled(false);
-        bindNewsFeedAdapter();
-        return view;
+        if (mView == null) {
+            mView = inflater.inflate(R.layout.fragment_news_feed, container, false);
+            mRecyclerView = mView.findViewById(R.id.news_feed_recycler_view);
+            mRecyclerView.setNestedScrollingEnabled(false);
+            bindNewsFeedAdapter();
+        }
+        return mView;
+    }
+
+    /**
+     * Called when host activity's onCreate method execution is fully completed.
+     * Here we are initializing the view components tied with host activity layout
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mFrameTitle.setText(R.string.news_feed);
+        mToggleSwitch.setSwitchElements(
+                mActivity.getResources().getStringArray(R.array.news_feeds_toggle_array),
+                new boolean[]{false, true, false});
+
+        AppBarLayout appBarLayout = mActivity.findViewById(R.id.ah_appbar);
+        if (appBarLayout.getVisibility() == View.INVISIBLE) {
+            appBarLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     /**
@@ -160,14 +177,16 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        LocalBroadcastManager.getInstance(mActivity)
-                .registerReceiver(mReceiver, new IntentFilter(NetworkStateService.NETWORK_STATE_ACTION));
 
-        scheduleNetworkStateChangeJob();
-        fetchQuerySnapshots();
+        //TODO
+        /*LocalBroadcastManager.getInstance(mActivity)
+                .registerReceiver(mReceiver, new IntentFilter(NetworkStateService.NETWORK_STATE_ACTION));*/
+
+        //scheduleNetworkStateChangeJob();
     }
 
     /**
+     * //TODO
      * Schedule {@link NetworkStateService} job for receiving NETWORK_STATE_CHANGE events.
      */
     private void scheduleNetworkStateChangeJob() {
@@ -176,8 +195,17 @@ public class NewsFeedFragment extends Fragment {
                 new ComponentName(
                         mActivity.getPackageName(),
                         NetworkStateService.class.getName()));
-        jobInfo1.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            jobInfo1.setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE).setRequiresBatteryNotLow(true).setPeriodic(0);
+        }
+        JobInfo.Builder jobInfo2 = new JobInfo.Builder(16635,
+                new ComponentName(
+                        mActivity.getPackageName(),
+                        NetworkStateService.class.getName()));
+        jobInfo2.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
+
         mScheduler.schedule(jobInfo1.build());
+        mScheduler.schedule(jobInfo2.build());
     }
 
     /**
@@ -203,7 +231,6 @@ public class NewsFeedFragment extends Fragment {
      * Bind the {@link NewsFeedAdapter} with mRecyclerView
      */
     private void bindNewsFeedAdapter() {
-        mFeedAdapter = new NewsFeedAdapter(mActivity.getApplicationContext(), mNewsFeeds);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity.getApplicationContext()));
         mRecyclerView.setAdapter(mFeedAdapter);
     }
@@ -220,8 +247,9 @@ public class NewsFeedFragment extends Fragment {
             mRegistration.remove();
         }
 
-        LocalBroadcastManager.getInstance(mActivity).unregisterReceiver(mReceiver);
-        mScheduler.cancelAll();
+        //TODO
+        //LocalBroadcastManager.getInstance(mActivity).unregisterReceiver(mReceiver);
+        //mScheduler.cancelAll();
     }
 
     /**

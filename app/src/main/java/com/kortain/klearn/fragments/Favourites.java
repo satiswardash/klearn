@@ -18,13 +18,13 @@ import com.kortain.klearn.widgets.ToggleButton;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavouritesFragment extends Fragment {
+public class Favourites extends Fragment {
 
     private TextView mFrameTitle;
     private ToggleButton mToggleSwitch;
     private MainActivity mActivity;
 
-    public FavouritesFragment() {
+    public Favourites() {
         // Required empty public constructor
     }
 
