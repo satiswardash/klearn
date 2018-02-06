@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.kortain.klearn.fragments.TextEditor"
+    tools:showIn="@layout/fragment_text_editor"
+    android:background="@color/colorBackgroundSecondary">
+
+    <ImageView
+        android:id="@+id/text_editor_close"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_close_black"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/text_editor_user_image"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_below="@+id/text_editor_close"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_editor_close" />
+
+    <EditText
+        android:id="@+id/text_editor_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_editor_user_image"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/text_editor_user_image"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="Share your thoughts here..."
+        android:inputType="textMultiLine"
+        android:overScrollMode="ifContentScrolls"
+        android:paddingBottom="32dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/colorBlackSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_editor_user_image"
+        app:layout_constraintTop_toBottomOf="@+id/text_editor_close"
+        android:focusedByDefault="true"/>
+
+    <ProgressBar
+        android:id="@+id/text_editor_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminateTint="@color/colorPrimary"/>
+
+</android.support.constraint.ConstraintLayout>

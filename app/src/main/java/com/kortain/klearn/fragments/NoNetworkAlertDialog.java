@@ -46,7 +46,7 @@ public class NoNetworkAlertDialog extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        View rootView = inflater.inflate(R.layout.layout_no_network, null);
+        View rootView = inflater.inflate(R.layout.dialog_no_network, null);
         builder.setView(rootView);
 
         final Dialog dialog = builder.create();

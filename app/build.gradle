@@ -32,20 +32,24 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.google.firebase:firebase-auth:11.8.0'
     implementation 'com.firebaseui:firebase-ui-firestore:3.1.3'
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
 
-    compile 'org.honorato.multistatetogglebutton:multistatetogglebutton:0.2.2'
-    compile 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'org.honorato.multistatetogglebutton:multistatetogglebutton:0.2.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'org.jsoup:jsoup:1.8.3'
-    compile 'com.leocardz:link-preview:2.0.0@aar'
-    compile 'com.nex3z:toggle-button-group:1.1.2'
-    compile 'com.eftimoff:android-pathview:1.0.8@aar'
-    compile 'com.github.arcadefire:nice-spinner:1.3.1'
-    implementation 'com.ebolo:krichtexteditor:0.0.3'
-    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'org.jsoup:jsoup:1.8.3'
+    implementation 'com.leocardz:link-preview:2.0.0@aar'
+    implementation 'com.nex3z:toggle-button-group:1.1.2'
+    implementation 'com.eftimoff:android-pathview:1.0.8@aar'
+    implementation 'com.github.arcadefire:nice-spinner:1.3.1'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
 }
+
+
+
+
 
 
 

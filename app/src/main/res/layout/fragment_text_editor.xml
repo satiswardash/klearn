@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kortain.klearn.fragments.TextEditor"
+    android:id="@+id/text_editor_root">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/content_text_editor" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/text_editor_done_fab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_send_black"
+        app:layout_anchor="@+id/include2"
+        app:layout_anchorGravity="right|bottom"
+        android:tint="@color/colorWhite"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:backgroundTint="@color/colorPrimary"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

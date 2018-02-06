@@ -63,7 +63,7 @@ public class NewsFeed extends Fragment {
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            showSnackBar(getString(R.string.back_online));
+            //showSnackBar(getString(R.string.back_online));
             //bindNewsFeedAdapter();
             fetchQuerySnapshots();
         }
@@ -179,10 +179,10 @@ public class NewsFeed extends Fragment {
         super.onStart();
 
         //TODO
-        /*LocalBroadcastManager.getInstance(mActivity)
-                .registerReceiver(mReceiver, new IntentFilter(NetworkStateService.NETWORK_STATE_ACTION));*/
+        LocalBroadcastManager.getInstance(mActivity)
+                .registerReceiver(mReceiver, new IntentFilter(NetworkStateService.NETWORK_STATE_ACTION));
 
-        //scheduleNetworkStateChangeJob();
+        scheduleNetworkStateChangeJob();
     }
 
     /**

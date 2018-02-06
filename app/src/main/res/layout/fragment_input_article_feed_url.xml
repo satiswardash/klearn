@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
-    tools:context="com.kortain.klearn.fragments.InputFeedCategory">
+    tools:context="com.kortain.klearn.fragments.InputArticleFeedUrl">
 
     <ImageView
-        android:id="@+id/cf_nav_back"
+        android:id="@+id/af_web_nav_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,7 +21,7 @@
         android:id="@+id/imageView11"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_below="@+id/cf_nav_back"
+        android:layout_below="@+id/af_web_nav_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:src="@mipmap/send" />
@@ -36,13 +36,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Choose a category that best matches your post."
+        android:text="Type the web address of the article."
         android:textAlignment="center"
         android:textColor="@color/colorBackgroundPrimary"
         android:textSize="20sp" />
 
-    <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
-        android:id="@+id/category_materialEditText"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/af_web_materialEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView15"
@@ -51,33 +51,20 @@
         android:layout_marginTop="56dp"
         android:layout_weight="1"
         android:drawablePadding="16dp"
-        android:drawableStart="@drawable/ic_category"
+        android:drawableStart="@drawable/ic_globe_white"
         android:drawableTint="@color/colorBackgroundPrimary"
-        android:hint="Category"
+        android:hint="URL"
+        android:inputType="textUri"
         android:textColorLink="@color/colorWhite"
         android:textCursorDrawable="@null"
         app:met_errorColor="@color/colorBackgroundPrimary"
-        app:met_maxCharacters="20"
-        app:met_minCharacters="5"
         app:met_primaryColor="@color/colorWhite"
         app:met_singleLineEllipsis="true"
         app:met_textColor="@color/colorWhite"
-        android:clickable="true"
-        android:focusable="true"/>
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_below="@+id/category_materialEditText"
-        android:layout_marginEnd="16dp"
-        android:text="eg. Current Affairs"
-        android:textColor="#B3FFFFFF"
-        android:textSize="13sp" />
+        app:met_underlineColor="@color/colorBackgroundSecondary" />
 
     <Button
-        android:id="@+id/cf_category_next_button"
+        android:id="@+id/af_web_next_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -90,5 +77,16 @@
         android:text="@string/next"
         android:textColor="@color/colorWhite"
         android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/af_web_nav_back"
+        android:layout_below="@+id/af_web_materialEditText"
+        android:layout_marginTop="-12dp"
+        android:text="eg. https://bit.ly/2E8iI4R"
+        android:textColor="#B3FFFFFF"
+        android:textSize="13sp" />
 
 </RelativeLayout>

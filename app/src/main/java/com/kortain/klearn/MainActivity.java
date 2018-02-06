@@ -73,6 +73,20 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
         public void onClick(View view) {
             Intent createFeedIntent = new Intent(getApplicationContext(), CreateNewFeedActivity.class);
             startActivity(createFeedIntent);
+            /*if(NetworkUtility.hasNetworkAccess(getApplicationContext())) {
+            } else {
+                final BottomNavigation nav = findViewById(R.id.ah_bottom_navigation);
+                nav.setVisibility(View.INVISIBLE);
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.ah_root), "Looks like you are offline, try posting your feed once you are online!", Snackbar.LENGTH_LONG);
+                snackbar.show();
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        nav.setVisibility(View.VISIBLE);
+                    }
+                }, 3000);
+            }*/
         }
     };
 

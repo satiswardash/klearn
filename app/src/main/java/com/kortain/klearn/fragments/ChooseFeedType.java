@@ -1,15 +1,13 @@
 package com.kortain.klearn.fragments;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebViewFragment;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,6 +15,7 @@ import android.widget.Toast;
 
 import com.kortain.klearn.CreateNewFeedActivity;
 import com.kortain.klearn.R;
+import com.kortain.klearn.Utility.Constants;
 import com.kortain.klearn.widgets.Spinner;
 
 import java.util.Arrays;
@@ -28,31 +27,12 @@ import java.util.List;
  */
 public class ChooseFeedType extends Fragment {
 
-    public static final String FEED_TYPE_KEY = "feed_type_key";
     //Default available feed types that user can select before posting a new feed
-    private final String[] FEED_TYPES = {"Regular Feed", "Image Feed", "Web Article", "Objective Question"};
     private CreateNewFeedActivity mActivity;
     private Spinner mFeedTypeSpinner;
     private ImageView mNavBack;
     private Button mContinueButton;
-    private String selectedFeedType = FEED_TYPES[0];
-
-    /**
-     * {@link android.widget.AdapterView.OnItemSelectedListener} for {@link Spinner} view
-     * Checks the index of selected item and navigate to corresponding fragments.
-     */
-    private AdapterView.OnItemSelectedListener mFeedTypeSelectionListener =
-            new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    handleSpinnerSelection(i);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-                    //TODO
-                }
-            };
+    private AdapterView.OnItemSelectedListener mFeedTypeSelectionListener;
 
     public ChooseFeedType() {
     } // Required empty public constructor
@@ -104,7 +84,22 @@ public class ChooseFeedType extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        mFeedTypeSpinner.setOnItemSelectedListener(mFeedTypeSelectionListener);
+
+        /**
+         * {@link android.widget.AdapterView.OnItemSelectedListener} for {@link Spinner} view
+         * Checks the index of selected item and navigate to corresponding fragments.
+         */
+        mFeedTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                handleSpinnerSelection(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         mNavBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,20 +109,22 @@ public class ChooseFeedType extends Fragment {
         mContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!selectedFeedType.isEmpty()) {
-                    Bundle bundle = new Bundle();
-                    InputFeedTitle feedTitle = new InputFeedTitle();
-                    feedTitle.setArguments(bundle);
+                if (!mActivity.selectedFeedType.isEmpty()) {
                     mActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.anf_frame_layout, feedTitle)
-                            .addToBackStack(InputFeedTitle.class.toString())
+                            .replace(R.id.anf_frame_layout, new InputFeedCategory())
+                            .addToBackStack(InputFeedCategory.class.toString())
                             .commit();
-                }
-                else {
+                } else {
                     Toast.makeText(mActivity, "You should select one feed type!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mFeedTypeSelectionListener = null;
     }
 
     /**
@@ -150,19 +147,19 @@ public class ChooseFeedType extends Fragment {
         switch (position) {
 
             case 0: {
-                selectedFeedType = FEED_TYPES[0];
+                mActivity.selectedFeedType = Constants.FEED_CATEGORY_REGULAR;
                 break;
             }
             case 1: {
-                selectedFeedType = FEED_TYPES[1];
+                mActivity.selectedFeedType = Constants.FEED_CATEGORY_IMAGE;
                 break;
             }
             case 2: {
-                selectedFeedType = FEED_TYPES[2];
+                mActivity.selectedFeedType = Constants.FEED_CATEGORY_WEB;
                 break;
             }
             case 3: {
-                selectedFeedType = FEED_TYPES[3];
+                mActivity.selectedFeedType = Constants.FEED_CATEGORY_OBJECTIVE;
                 break;
             }
         }
@@ -172,7 +169,7 @@ public class ChooseFeedType extends Fragment {
      * Bind the values of FEED_TYPES array to spinner menu items.
      */
     private void bindSpinnerMenuItems() {
-        List<String> menuItems = new LinkedList<>(Arrays.asList(FEED_TYPES));
+        List<String> menuItems = new LinkedList<>(Arrays.asList(mActivity.FEED_TYPES));
         mFeedTypeSpinner.attachDataSource(menuItems);
     }
 }

@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.kortain.klearn.fragments.InputFeedTitle">
+    tools:context="com.kortain.klearn.fragments.AttachFeedImages">
+
 
     <ImageView
-        android:id="@+id/cf_nav_back"
+        android:id="@+id/if_nav_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,10 +21,10 @@
         android:id="@+id/imageView11"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_below="@+id/cf_nav_back"
+        android:layout_below="@+id/if_nav_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:src="@mipmap/send" />
+        android:src="@mipmap/attach_image" />
 
     <TextView
         android:id="@+id/textView15"
@@ -36,36 +36,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="What is the title for your post?"
+        android:text="@string/attach_image_header_text"
         android:textAlignment="center"
         android:textColor="@color/colorBackgroundPrimary"
         android:textSize="20sp" />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/cf_title_materialEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView15"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        android:layout_weight="1"
-        android:drawablePadding="16dp"
-        android:drawableStart="@drawable/ic_title_white"
-        android:drawableTint="@color/colorBackgroundPrimary"
-        android:hint="@string/title"
-        android:textColorLink="@color/colorWhite"
-        android:textCursorDrawable="@null"
-        app:met_errorColor="@color/colorBackgroundPrimary"
-        app:met_underlineColor="@color/colorBackgroundSecondary"
-        app:met_maxCharacters="100"
-        app:met_minCharacters="10"
-        app:met_primaryColor="@color/colorWhite"
-        app:met_singleLineEllipsis="true"
-        app:met_textColor="@color/colorWhite" />
-
     <Button
-        android:id="@+id/cf_title_next_button"
+        android:id="@+id/if_attach_image_next_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -79,15 +56,50 @@
         android:textColor="@color/colorWhite"
         android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/if_attach_image_button"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/cf_title_materialEditText"
-        android:layout_below="@+id/cf_title_materialEditText"
-        android:layout_marginEnd="16dp"
-        android:text="@string/hint_post_title_fragment"
-        android:textColor="#B3FFFFFF"
-        android:textSize="13sp" />
+        android:layout_below="@+id/textView15"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_button_primary_gradient"
+        android:text="@string/attach"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBackgroundPrimary" />
+
+    <LinearLayout
+        android:id="@+id/if_preview_image_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/if_attach_image_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_bacground_primary_round_corner"
+        android:gravity="bottom|center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/if_attached_image"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/splash_bg"
+            android:scaleType="centerCrop"/>
+
+        <ProgressBar
+            android:id="@+id/upload_image_progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:padding="0dp"
+            android:indeterminate="true"
+            android:layout_marginBottom="-10dp"
+            android:indeterminateTint="@color/colorPrimary"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

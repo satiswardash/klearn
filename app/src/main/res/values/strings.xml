@@ -61,4 +61,10 @@
     <string name="back_online">Back online.</string>
     <string name="help_us_choosing_the_feed_type">Help us choosing the feed type.</string>
     <string name="create_new_post">Create new post</string>
+    <string name="title_activity_text_editor">TextEditorActivity</string>
+    <string name="hint_post_title_fragment">eg. US announcement brings relief for Indian Techies.</string>
+    <string name="title">Title</string>
+    <string name="attach">Attach</string>
+    <string name="attach_image_header_text">Attach image to your post.</string>
+    <string name="preview">Preview</string>
 </resources>
