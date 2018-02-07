@@ -196,7 +196,7 @@ public class NewsFeed extends Fragment {
                         mActivity.getPackageName(),
                         NetworkStateService.class.getName()));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            jobInfo1.setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE).setRequiresBatteryNotLow(true).setPeriodic(0);
+            //jobInfo1.setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE).setRequiresBatteryNotLow(true).setPeriodic(0);
         }
         JobInfo.Builder jobInfo2 = new JobInfo.Builder(16635,
                 new ComponentName(
@@ -204,7 +204,7 @@ public class NewsFeed extends Fragment {
                         NetworkStateService.class.getName()));
         jobInfo2.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
 
-        mScheduler.schedule(jobInfo1.build());
+        //mScheduler.schedule(jobInfo1.build());
         mScheduler.schedule(jobInfo2.build());
     }
 

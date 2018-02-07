@@ -2,20 +2,30 @@ package com.kortain.klearn;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
+import com.bluehomestudio.progresswindow.ProgressWindow;
+import com.bluehomestudio.progresswindow.ProgressWindowConfiguration;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+import com.kortain.klearn.Utility.Constants;
+import com.kortain.klearn.Utility.CreateFeedUtility;
 import com.kortain.klearn.Utility.FileUtility;
+import com.kortain.klearn.Utility.ProgressLoaderUtility;
 import com.kortain.klearn.fragments.AttachFeedImages;
 import com.kortain.klearn.fragments.ChooseFeedType;
 import com.kortain.klearn.fragments.CreateFeedDialog;
@@ -26,6 +36,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CreateNewFeedActivity extends AppCompatActivity implements CreateFeedDialog.CreateFeedDialogListeners {
 
@@ -41,7 +52,7 @@ public class CreateNewFeedActivity extends AppCompatActivity implements CreateFe
     public int mExtWStoragePermission;
 
     //Feed data members
-    public String selectedFeedType = FEED_TYPES[0];
+    public String selectedFeedType = Constants.FEED_CATEGORY_REGULAR;
     public String feedCategory = "";
     public String feedTitle = "";
     public String feedDescription = "";
@@ -49,6 +60,8 @@ public class CreateNewFeedActivity extends AppCompatActivity implements CreateFe
     public List<String> options = new ArrayList<>();
     public Uri imageURI;
     public String articleUrl;
+
+    public ProgressLoaderUtility mProgressLoaderUtility;
 
     /**
      * @param savedInstanceState
@@ -63,6 +76,7 @@ public class CreateNewFeedActivity extends AppCompatActivity implements CreateFe
                 .replace(R.id.anf_frame_layout, new ChooseFeedType(), ChooseFeedType.class.toString())
                 .commit();
 
+        mProgressLoaderUtility = ProgressLoaderUtility.getInstance(R.id.anf_frame_layout, getSupportFragmentManager());
     }
 
     /**
@@ -152,7 +166,7 @@ public class CreateNewFeedActivity extends AppCompatActivity implements CreateFe
             case IMAGE_ATTACHMENT_INTENT: {
                 AttachFeedImages fragment = (AttachFeedImages) getSupportFragmentManager().findFragmentByTag(AttachFeedImages.class.toString());
                 if (fragment != null) {
-                    if ( data != null && data.getData() != null) {
+                    if (data != null && data.getData() != null) {
                         imageURI = data.getData();
                     }
                     fragment.bindImage(imageURI.toString());
@@ -168,7 +182,7 @@ public class CreateNewFeedActivity extends AppCompatActivity implements CreateFe
     @Override
     public void onPositiveClickHandler() {
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        if (fragments.get(fragments.size()-2) instanceof InputArticleFeedUrl) {
+        if (fragments.get(fragments.size() - 2) instanceof InputArticleFeedUrl) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.anf_frame_layout, new TextEditor(), TextEditor.class.toString())
@@ -182,6 +196,43 @@ public class CreateNewFeedActivity extends AppCompatActivity implements CreateFe
      */
     @Override
     public void onNegativeClickHandler() {
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
 
+        if (fragments.get(fragments.size() - 2) instanceof InputArticleFeedUrl) {
+            Map<String, Object> webFeed = null;
+            webFeed = CreateFeedUtility.getInstance()
+                    .createNewFeed(
+                            FirebaseAuth.getInstance().getCurrentUser().getUid(),   //UserId
+                            selectedFeedType,                                       //Feed type
+                            feedCategory,                                           //Feed category
+                            feedTitle,                                              //Feed title
+                            null,
+                            0,
+                            0,
+                            null,
+                            articleUrl,                                            //Feed web url
+                            null,
+                            null,
+                            0);
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection(Constants.COLLECTION_FEEDS)
+                    .document()
+                    .set(webFeed, SetOptions.merge())
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //TODO
+                        }
+                    });
+        }
     }
 }

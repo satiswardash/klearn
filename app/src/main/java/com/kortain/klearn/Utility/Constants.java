@@ -17,6 +17,7 @@ public interface Constants {
     String FEED_ANSWER = "answer";
     String FEED_ANALYTICS = "analytics";
     String FEED_IMAGES = "images";
+    String FEED_WEB_URL = "webUrl";
 
     String FEED_CATEGORY_OBJECTIVE = "Objective";
     String FEED_CATEGORY_WEB = "Web Article";

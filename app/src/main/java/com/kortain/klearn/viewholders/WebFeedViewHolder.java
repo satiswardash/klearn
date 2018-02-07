@@ -96,11 +96,15 @@ public class WebFeedViewHolder extends RecyclerView.ViewHolder implements LinkPr
             //TODO change the date value into appropriate format
             timestamp.setText(data.toString());
         }
-        if (item.contains(Constants.FEED_DESCRIPTION)) {
-            String data = item.getString(Constants.FEED_DESCRIPTION);
+        if (item.contains(Constants.FEED_WEB_URL)) {
+            String data = item.getString(Constants.FEED_WEB_URL);
             mCrawler = new TextCrawler();
             //TODO Validate the data whether its a web url or not
             mCrawler.makePreview(mViewHolder, data);
+        }
+        if (item.contains(Constants.FEED_DESCRIPTION)) {
+            String data = item.getString(Constants.FEED_DESCRIPTION);
+            description.setText(data);
         }
         if (item.contains(Constants.FEED_LIKES)) {
             long data = item.getLong(Constants.FEED_LIKES);
