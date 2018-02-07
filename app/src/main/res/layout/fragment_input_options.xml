@@ -1,13 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.kortain.klearn.fragments.InputFeedTitle">
+    tools:context="com.kortain.klearn.fragments.InputOptions"
+    android:background="@color/colorPrimary">
 
     <ImageView
-        android:id="@+id/title_nav_back"
+        android:id="@+id/cf_nav_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,10 +21,10 @@
         android:id="@+id/imageView11"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_below="@+id/title_nav_back"
+        android:layout_below="@+id/cf_nav_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:src="@mipmap/send" />
+        android:src="@drawable/ic_choices" />
 
     <TextView
         android:id="@+id/textView15"
@@ -36,36 +36,36 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="What is the title for your post?"
+        android:text="Provide the options for your question."
         android:textAlignment="center"
         android:textColor="@color/colorBackgroundPrimary"
         android:textSize="20sp" />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/cf_title_materialEditText"
+    <include
+        android:id="@+id/options"
+        layout="@layout/viewgroup_objective"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_below="@+id/textView15"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"/>
+
+
+    <TextView
+        android:id="@+id/textView16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView15"
-        android:layout_marginEnd="16dp"
+        android:layout_above="@id/fio_publish_button"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        android:layout_weight="1"
-        android:drawablePadding="16dp"
-        android:drawableStart="@drawable/ic_title_white"
-        android:drawableTint="@color/colorBackgroundPrimary"
-        android:hint="@string/title"
-        android:textColorLink="@color/colorWhite"
-        android:textCursorDrawable="@null"
-        app:met_errorColor="@color/colorBackgroundPrimary"
-        app:met_underlineColor="@color/colorBackgroundSecondary"
-        app:met_maxCharacters="100"
-        app:met_minCharacters="10"
-        app:met_primaryColor="@color/colorWhite"
-        app:met_singleLineEllipsis="true"
-        app:met_textColor="@color/colorWhite" />
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        android:text="After entering your option values select the correct answer."
+        android:textColor="#B3FFFFFF"
+        android:textSize="13sp" />
 
     <Button
-        android:id="@+id/cf_title_next_button"
+        android:id="@+id/fio_publish_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -75,19 +75,7 @@
         android:layout_marginStart="16dp"
         android:background="@drawable/bg_button_primary_gradient"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/next"
+        android:text="Publish"
         android:textColor="@color/colorWhite"
         android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/cf_title_materialEditText"
-        android:layout_below="@+id/cf_title_materialEditText"
-        android:layout_marginEnd="16dp"
-        android:text="@string/hint_post_title_fragment"
-        android:textColor="#B3FFFFFF"
-        android:textSize="13sp" />
-
 </RelativeLayout>

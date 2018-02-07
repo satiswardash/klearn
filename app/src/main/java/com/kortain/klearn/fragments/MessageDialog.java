@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,9 +22,9 @@ import com.kortain.klearn.R;
  * Created by satiswardash on 06/02/18.
  */
 
-public class CreateFeedDialog extends DialogFragment {
+public class MessageDialog extends DialogFragment {
 
-    private static final String TAG = CreateFeedDialog.class.toString();
+    private static final String TAG = MessageDialog.class.toString();
     private TextView messageTextView;
     private Button mPositiveButton;
     private Button mNegativeButton;
@@ -59,7 +58,7 @@ public class CreateFeedDialog extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        View view = inflater.inflate(R.layout.dialog_new_feed, null);
+        View view = inflater.inflate(R.layout.dialog_message, null);
         builder.setView(view);
         play((PathView) view.findViewById(R.id.anf_path_image_view));
         messageTextView = view.findViewById(R.id.anf_dialog_message_textView);

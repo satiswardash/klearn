@@ -84,14 +84,14 @@ public class InputArticleFeedUrl extends Fragment {
                     mActivity.articleUrl = mWebArticleAddressEditText.getText().toString();
                     if (validate(mActivity.articleUrl)) {
                         //TODO
-                        CreateFeedDialog dialog = new CreateFeedDialog();
+                        MessageDialog dialog = new MessageDialog();
                         Bundle bundle = new Bundle();
                         bundle.putString("message", "Would you like to add some description to your article?");
                         bundle.putString("positive", "yes");
                         bundle.putString("negative", "no");
                         dialog.setArguments(bundle);
                         dialog.setCancelable(true);
-                        dialog.show(getFragmentManager(), CreateFeedDialog.class.toString());
+                        dialog.show(getFragmentManager(), MessageDialog.class.toString());
                     } else
                         Toast.makeText(getContext(), "The article URL seems to be invalid!", Toast.LENGTH_SHORT).show();
                 }

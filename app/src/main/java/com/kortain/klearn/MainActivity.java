@@ -157,6 +157,8 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
         SCREEN_UTILITY = ScreenUtility.getInstance(this);
         ApplicationUtility.getInstance(this).setStatusBarBackground(this, R.color.colorPrimaryTransparent);
         mBottomNavigation = findViewById(R.id.ah_bottom_navigation);
+        fab = findViewById(R.id.ah_create_post_fab);
+        fab.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -182,7 +184,6 @@ public class MainActivity extends AppCompatActivity implements OnCompleteListene
                     public void onEvent(DocumentSnapshot snapshot, FirebaseFirestoreException e) {
                         if (e == null) {
                             if (snapshot.contains(Constants.USER_IS_ADMIN)) {
-                                fab = findViewById(R.id.ah_create_post_fab);
                                 if (snapshot.getBoolean(Constants.USER_IS_ADMIN)) {
                                     final Handler handler = new Handler();
                                     handler.postDelayed(new Runnable() {

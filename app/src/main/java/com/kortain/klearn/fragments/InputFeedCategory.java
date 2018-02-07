@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.kortain.klearn.CreateNewFeedActivity;
 import com.kortain.klearn.R;
+import com.kortain.klearn.Utility.Constants;
 import com.rengwuxian.materialedittext.MaterialAutoCompleteTextView;
 
 /**
@@ -24,7 +26,7 @@ import com.rengwuxian.materialedittext.MaterialAutoCompleteTextView;
 public class InputFeedCategory extends Fragment {
 
     private static final String[] DATA = new String[]{
-            "History", "General Knowledge", "Current Affairs", "India", "Politics"
+            "History", "General Knowledge", "Current Affairs", "India", "Politics", "Science and Technology"
     };
 
     private CreateNewFeedActivity mActivity;
@@ -32,6 +34,7 @@ public class InputFeedCategory extends Fragment {
     private Button mContinueButton;
     private ArrayAdapter<String> mSuggestionAdapter;
     private View.OnClickListener mListener;
+    private ImageView mBackNavigation;
 
     public InputFeedCategory() {
         // Required empty public constructor
@@ -90,6 +93,13 @@ public class InputFeedCategory extends Fragment {
             }
         };
         mContinueButton.setOnClickListener(mListener);
+        mBackNavigation = view.findViewById(R.id.category_nav_back);
+        mBackNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mActivity.getSupportFragmentManager().popBackStackImmediate();
+            }
+        });
     }
 
     /**
@@ -98,7 +108,7 @@ public class InputFeedCategory extends Fragment {
     private void onContinueButtonPressed() {
         if (!mFeedCategoryEditText.getText().toString().isEmpty()) {
             mActivity.feedCategory = mFeedCategoryEditText.getText().toString();
-            if (mActivity.selectedFeedType.equals(mActivity.FEED_TYPES[3])) {
+            if (mActivity.selectedFeedType.equals(Constants.FEED_CATEGORY_OBJECTIVE)) {
                 mActivity.getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.anf_frame_layout, new TextEditor())

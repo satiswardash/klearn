@@ -158,7 +158,12 @@ public class TextEditor extends Fragment {
                 mTextEditorFab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO
+                        mActivity.question = mEditor.getText().toString();
+                        mActivity.getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.anf_frame_layout, new InputOptions(), InputOptions.class.toString())
+                                .addToBackStack(InputOptions.class.toString())
+                                .commit();
                     }
                 });
                 break;

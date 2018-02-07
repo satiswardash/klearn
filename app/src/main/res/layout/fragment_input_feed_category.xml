@@ -7,7 +7,7 @@
     tools:context="com.kortain.klearn.fragments.InputFeedCategory">
 
     <ImageView
-        android:id="@+id/cf_nav_back"
+        android:id="@+id/category_nav_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,7 +21,7 @@
         android:id="@+id/imageView11"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_below="@+id/cf_nav_back"
+        android:layout_below="@+id/category_nav_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:src="@mipmap/send" />

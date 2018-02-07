@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.kortain.klearn.CreateNewFeedActivity;
@@ -30,6 +31,7 @@ public class InputFeedTitle extends Fragment {
             onContinueButtonPressed();
         }
     };
+    private ImageView mBackNavigation;
 
     public InputFeedTitle() {
         // Required empty public constructor
@@ -69,6 +71,13 @@ public class InputFeedTitle extends Fragment {
         mContinue = view.findViewById(R.id.cf_title_next_button);
         mTitleEditText = view.findViewById(R.id.cf_title_materialEditText);
         mContinue.setOnClickListener(mListener);
+        mBackNavigation = view.findViewById(R.id.title_nav_back);
+        mBackNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mActivity.getSupportFragmentManager().popBackStackImmediate();
+            }
+        });
     }
 
     /**
