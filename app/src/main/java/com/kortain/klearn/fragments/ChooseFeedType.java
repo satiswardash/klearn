@@ -4,7 +4,6 @@ package com.kortain.klearn.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.kortain.klearn.CreateNewFeedActivity;
+import com.kortain.klearn.MessageActivity;
 import com.kortain.klearn.R;
 import com.kortain.klearn.Utility.Constants;
 import com.kortain.klearn.widgets.Spinner;
@@ -28,7 +27,7 @@ import java.util.List;
 public class ChooseFeedType extends Fragment {
 
     //Default available feed types that user can select before posting a new feed
-    private CreateNewFeedActivity mActivity;
+    private MessageActivity mActivity;
     private Spinner mFeedTypeSpinner;
     private ImageView mNavBack;
     private Button mContinueButton;
@@ -48,7 +47,7 @@ public class ChooseFeedType extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mActivity = (CreateNewFeedActivity) getActivity();
+        mActivity = (MessageActivity) getActivity();
     }
 
     /**

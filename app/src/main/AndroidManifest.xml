@@ -63,7 +63,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".CreateNewFeedActivity"
+            android:name=".MessageActivity"
             android:screenOrientation="portrait"/>
 
         <service

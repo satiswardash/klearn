@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.kortain.klearn.CreateNewFeedActivity;
+import com.kortain.klearn.MessageActivity;
 import com.kortain.klearn.R;
 import com.kortain.klearn.Utility.Constants;
 import com.rengwuxian.materialedittext.MaterialAutoCompleteTextView;
@@ -29,7 +28,7 @@ public class InputFeedCategory extends Fragment {
             "History", "General Knowledge", "Current Affairs", "India", "Politics", "Science and Technology"
     };
 
-    private CreateNewFeedActivity mActivity;
+    private MessageActivity mActivity;
     private MaterialAutoCompleteTextView mFeedCategoryEditText;
     private Button mContinueButton;
     private ArrayAdapter<String> mSuggestionAdapter;
@@ -46,8 +45,8 @@ public class InputFeedCategory extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof CreateNewFeedActivity) {
-            mActivity = (CreateNewFeedActivity) context;
+        if (context instanceof MessageActivity) {
+            mActivity = (MessageActivity) context;
         }
     }
 

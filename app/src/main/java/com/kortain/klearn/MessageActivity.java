@@ -23,9 +23,9 @@ import com.kortain.klearn.Utility.FileUtility;
 import com.kortain.klearn.Utility.ProgressLoaderUtility;
 import com.kortain.klearn.fragments.AttachFeedImages;
 import com.kortain.klearn.fragments.ChooseFeedType;
+import com.kortain.klearn.fragments.InputArticleFeedUrl;
 import com.kortain.klearn.fragments.InputOptions;
 import com.kortain.klearn.fragments.MessageDialog;
-import com.kortain.klearn.fragments.InputArticleFeedUrl;
 import com.kortain.klearn.fragments.TextEditor;
 import com.kortain.klearn.fragments.TextInputDialog;
 
@@ -35,10 +35,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CreateNewFeedActivity extends AppCompatActivity
-        implements MessageDialog.CreateFeedDialogListeners, TextInputDialog.TextInputDialogListener {
+public class MessageActivity extends AppCompatActivity
+        implements MessageDialog.MessageDialogListeners, TextInputDialog.TextInputDialogListener {
 
-    private static final String TAG = CreateNewFeedActivity.class.toString();
+    private static final String TAG = MessageActivity.class.toString();
     public final String[] FEED_TYPES = {"Regular Feed", "Image Feed", "Web Article", "Objective Question"};
 
     public final int IMAGE_ATTACHMENT_INTENT = 1;
@@ -64,6 +64,14 @@ public class CreateNewFeedActivity extends AppCompatActivity
     public ProgressLoaderUtility mProgressLoaderUtility;
 
     /**
+     * Called when the activity is starting.
+     * This is where most initialization should go: calling setContentView(int) to inflate the activity's UI,
+     * using findViewById(int) to programmatically interact with widgets in the UI,
+     * calling managedQuery(android.net.Uri, String[], String, String[], String)
+     * to retrieve cursors for data being displayed, etc.
+     *
+     * Here we are initializing and inflating the {@link ChooseFeedType} fragment view components
+     *
      * @param savedInstanceState
      */
     @Override
@@ -80,7 +88,9 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * Called after onCreate(Bundle) — or after onRestart() when the activity had been stopped,
+     * but is now again being displayed to the user.
+     * Here we are checking for the permissions
      */
     @Override
     protected void onStart() {
@@ -94,7 +104,7 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * Handle on camera option selected
      */
     public void onCameraOptionSelected() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -121,7 +131,7 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * Handle on gallery option selected
      */
     public void onGalleryOptionSelected() {
         Intent galleryIntent = new Intent();
@@ -132,6 +142,8 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
+     * Request permission result handler post user reacts to the asked permission
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults
@@ -153,6 +165,10 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
+     * Called when an activity you launched exits, giving you the requestCode you started it with, the resultCode it returned,
+     * and any additional data from it. The resultCode will be RESULT_CANCELED if the activity explicitly returned that,
+     * didn't return any result, or crashed during its operation.
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -177,7 +193,7 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * Callback listener for onPositive button clicked for {@link MessageDialog}
      */
     @Override
     public void onPositiveClickHandler() {
@@ -199,7 +215,7 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * Callback listener for onNegative button clicked for {@link MessageDialog}
      */
     @Override
     public void onNegativeClickHandler() {
@@ -244,7 +260,7 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * Callback listener for submit button clicked for {@link TextInputDialog}
      */
     @Override
     public void submit(String text) {
@@ -272,6 +288,7 @@ public class CreateNewFeedActivity extends AppCompatActivity
     }
 
     /**
+     * Publish the feed to Firestore using {@link FirebaseFirestore} db instance
      *
      * @param feed
      */

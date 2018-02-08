@@ -2,6 +2,7 @@ package com.kortain.klearn.viewholders;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -86,7 +87,11 @@ public class ImageFeedViewHolder extends RecyclerView.ViewHolder {
         if (item.contains(Constants.FEED_TIMESTAMP)) {
             Date data = item.getDate(Constants.FEED_TIMESTAMP);
             //TODO change the date value into appropriate format
-            timestamp.setText(data.toString());
+            CharSequence format = DateUtils.getRelativeTimeSpanString(data.getTime());
+            if (format.toString().equals("0 minutes ago"))
+                timestamp.setText("Just now");
+            else
+                timestamp.setText(format.toString());
         }
         if (item.contains(Constants.FEED_DESCRIPTION)) {
             String data = item.getString(Constants.FEED_DESCRIPTION);

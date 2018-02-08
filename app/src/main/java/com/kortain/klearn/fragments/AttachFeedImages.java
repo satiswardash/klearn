@@ -28,18 +28,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.kortain.klearn.CreateNewFeedActivity;
+import com.kortain.klearn.MessageActivity;
 import com.kortain.klearn.R;
 import com.kortain.klearn.Utility.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.UUID;
 
 /**
@@ -48,7 +44,7 @@ import java.util.UUID;
 public class AttachFeedImages extends Fragment {
 
     private static final String TAG = AttachFeedImages.class.toString();
-    private CreateNewFeedActivity mActivity;
+    private MessageActivity mActivity;
     private Uri mUri;
 
     private ImageView mBackNavigation;
@@ -70,8 +66,8 @@ public class AttachFeedImages extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof CreateNewFeedActivity) {
-            mActivity = (CreateNewFeedActivity) context;
+        if (context instanceof MessageActivity) {
+            mActivity = (MessageActivity) context;
         }
     }
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,8 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.bluehomestudio.progresswindow.ProgressWindow;
-import com.bluehomestudio.progresswindow.ProgressWindowConfiguration;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,12 +25,11 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.kortain.klearn.CreateNewFeedActivity;
+import com.kortain.klearn.MessageActivity;
 import com.kortain.klearn.MainActivity;
 import com.kortain.klearn.R;
 import com.kortain.klearn.Utility.Constants;
 import com.kortain.klearn.Utility.CreateFeedUtility;
-import com.kortain.klearn.Utility.ProgressLoaderUtility;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -52,7 +48,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class TextEditor extends Fragment {
 
     private static final String TAG = TextEditor.class.toString();
-    private CreateNewFeedActivity mActivity;
+    private MessageActivity mActivity;
     private FloatingActionButton mTextEditorFab;
     private ImageView mCloseTextEditorView;
     private EditText mEditor;
@@ -68,8 +64,8 @@ public class TextEditor extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof CreateNewFeedActivity) {
-            mActivity = (CreateNewFeedActivity) context;
+        if (context instanceof MessageActivity) {
+            mActivity = (MessageActivity) context;
         }
     }
 
@@ -177,7 +173,7 @@ public class TextEditor extends Fragment {
      * Post Web feed to firestore db
      */
     private void postWebFeedToFirebase() {
-
+        mActivity.mProgressLoaderUtility.setLoadingScreen(View.VISIBLE);
         Map<String, Object> regularFeed = null;
         regularFeed = CreateFeedUtility.getInstance()
                 .createNewFeed(
@@ -200,7 +196,7 @@ public class TextEditor extends Fragment {
      * Post Regular feed to firestore db
      */
     private void postRegularFeedToFirebase() {
-
+        mActivity.mProgressLoaderUtility.setLoadingScreen(View.VISIBLE);
         Map<String, Object> regularFeed = null;
         regularFeed = CreateFeedUtility.getInstance()
                 .createNewFeed(

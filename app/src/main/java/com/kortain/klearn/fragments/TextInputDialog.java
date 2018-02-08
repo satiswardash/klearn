@@ -44,7 +44,7 @@ public class TextInputDialog extends DialogFragment {
         try {
             mListener = (TextInputDialog.TextInputDialogListener) getActivity();
         } catch (ClassCastException ex) {
-            Log.e(TAG, "onAttach: You must implement the CreateFeedDialogListeners methods. \n", ex.getCause());
+            Log.e(TAG, "onAttach: You must implement the MessageDialogListeners methods. \n", ex.getCause());
         }
     }
 

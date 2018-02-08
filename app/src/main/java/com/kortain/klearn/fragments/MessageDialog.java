@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.eftimoff.androipathview.PathView;
 import com.kortain.klearn.R;
+import com.kortain.klearn.Utility.NetworkUtility;
 
 /**
  * Created by satiswardash on 06/02/18.
@@ -28,9 +29,14 @@ public class MessageDialog extends DialogFragment {
     private TextView messageTextView;
     private Button mPositiveButton;
     private Button mNegativeButton;
-    private CreateFeedDialogListeners mListener;
+    private MessageDialogListeners mListener;
 
     /**
+     *Called when a fragment is first attached to its context.
+     * <p>
+     * Here we are initializing the view components attached with the host activity and
+     * check for network availability using {@link NetworkUtility} before fetching feeds.
+     * This is the method where you can save the Host Activity instance for the first time before the fragment inflates the layout
      *
      * @param context
      */
@@ -38,9 +44,9 @@ public class MessageDialog extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            mListener = (CreateFeedDialogListeners) getActivity();
+            mListener = (MessageDialogListeners) getActivity();
         } catch (ClassCastException ex) {
-            Log.e(TAG, "onAttach: You must implement the CreateFeedDialogListeners methods. \n", ex.getCause());
+            Log.e(TAG, "onAttach: You must implement the MessageDialogListeners methods. \n", ex.getCause());
         }
     }
 
@@ -124,7 +130,7 @@ public class MessageDialog extends DialogFragment {
     /**
      * Listeners callback method for host activity class
      */
-    public interface CreateFeedDialogListeners {
+    public interface MessageDialogListeners {
         void onPositiveClickHandler();
 
         void onNegativeClickHandler();

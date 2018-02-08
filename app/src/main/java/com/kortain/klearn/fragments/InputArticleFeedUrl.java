@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.kortain.klearn.CreateNewFeedActivity;
+import com.kortain.klearn.MessageActivity;
 import com.kortain.klearn.R;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -23,7 +23,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 public class InputArticleFeedUrl extends Fragment {
 
 
-    private CreateNewFeedActivity mActivity;
+    private MessageActivity mActivity;
     private ImageView mBackNavigation;
     private MaterialEditText mWebArticleAddressEditText;
     private Button mContinue;
@@ -40,8 +40,8 @@ public class InputArticleFeedUrl extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof CreateNewFeedActivity) {
-            mActivity = (CreateNewFeedActivity) context;
+        if (context instanceof MessageActivity) {
+            mActivity = (MessageActivity) context;
         }
     }
 

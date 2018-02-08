@@ -11,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.kortain.klearn.CreateNewFeedActivity;
+import com.kortain.klearn.MessageActivity;
 import com.kortain.klearn.R;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ import java.util.List;
 public class InputOptions extends Fragment {
 
 
-    private CreateNewFeedActivity mActivity;
+    private MessageActivity mActivity;
     private Button mPublishButton;
     private RadioGroup mRadioGroup;
     private EditText mOptionEditText1;
@@ -46,8 +45,8 @@ public class InputOptions extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof CreateNewFeedActivity) {
-            mActivity = (CreateNewFeedActivity) context;
+        if (context instanceof MessageActivity) {
+            mActivity = (MessageActivity) context;
         }
     }
 
